@@ -1,4 +1,4 @@
-import tags from "../../../data/tags";
+import tags from "../data/tags";
 
 const Tags = () => {
   return (

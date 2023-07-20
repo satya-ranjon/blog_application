@@ -1,37 +1,25 @@
 import { images } from "../../../constants";
+import Search from "./Search";
+import Tags from "./Tags";
 
 const HeroSection = () => {
   return (
-    <div className="container mx-auto flex justify-between ">
-      <div className=" w-{539}">
-        <h1 className=" text-6xl font-semibold">
-          Read the most interesting articles
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua
-        </p>
-        <div>
-          <input type="text" placeholder="Search article" />
-          <button
-            className=" bg-blue-500 py-1 px-4 text-sm text-white font-semibold rounded-md border-2 border-blue-500 hover:bg-white hover:text-blue-500 transition-colors duration-300
-          ">
-            Search
-          </button>
-        </div>
-        <div>
-          <h6>Popular Tags :</h6>
-          <span>Design</span>
-          <span>User Experience</span>
-          <span>User Interfaces</span>
-        </div>
+    <div className="container flex flex-col px-4 sm:px-20 lg:px-5 xl:px-0 mx-auto  py-5 lg:flex-row justify-center lg:justify-between items-center text-center lg:text-left mt-10 sm:mt-16">
+      <div className=" max-w-[539px]">
+        <>
+          <h1 className="text-2xl font-bold sm:text-5xl m-auto  text-dark-soft">
+            Read the most interesting articles
+          </h1>
+          <p className="text-base sm:text-xl text-dark-light py-4 ">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua
+          </p>
+        </>
+        <Search />
+        <Tags />
       </div>
-      <div>
-        <img
-          className="w-16 h-16"
-          src={images.headerThump}
-          alt="header thumbed"
-        />
+      <div className=" hidden lg:block w-[700px] ">
+        <img src={images.headerThump} alt="header thumbed" />
       </div>
     </div>
   );

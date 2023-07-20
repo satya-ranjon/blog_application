@@ -9,9 +9,9 @@ const Header = () => {
   const navVisibilityHandler = () => setNavIsVisible((prv) => !prv);
 
   return (
-    <header className="container px-2 sm:px-8 xl:px-0  mx-auto   flex justify-between py-5 items-center font-opensans ">
+    <header className="container px-2 lg:px-5 xl:px-0  mx-auto   flex justify-between py-5 items-center font-opensans ">
       <div>
-        <img src={images.logo} alt="logo" className="w-16 h-4" />
+        <img src={images.logo} alt="logo" className=" w-[90px] h-[28px]" />
       </div>
       <div className=" lg:hidden text-2xl z-50 cursor-pointer">
         {navIsVisible ? (

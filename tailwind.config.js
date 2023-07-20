@@ -5,8 +5,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        theme: "#f9fcff",
         primary: "#1565D8",
         dark: {
+          light: "#5A7184",
           hard: "#0D2436",
           soft: "#183B56",
         },

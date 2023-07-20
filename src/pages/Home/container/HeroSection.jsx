@@ -1,6 +1,6 @@
-import { images } from "../constants";
+import { images } from "../../../constants";
 
-const HeaderContent = () => {
+const HeroSection = () => {
   return (
     <div className="container mx-auto flex justify-between ">
       <div className=" w-{539}">
@@ -27,10 +27,14 @@ const HeaderContent = () => {
         </div>
       </div>
       <div>
-        <img src={images.headerThump} alt="header thumbed" />
+        <img
+          className="w-16 h-16"
+          src={images.headerThump}
+          alt="header thumbed"
+        />
       </div>
     </div>
   );
 };
 
-export default HeaderContent;
+export default HeroSection;

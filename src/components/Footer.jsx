@@ -1,4 +1,5 @@
 import { images } from "../constants";
+import Categories from "./Categories";
 
 const Footer = () => {
   return (
@@ -26,74 +27,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="grid grid-cols-2 gap-5 justify-between w-full ">
-            <ul>
-              <span className="pb-4  block text-[#5A7184] font-bold text-base">
-                Product
-              </span>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-            </ul>
-            <ul>
-              <span className="pb-4  block text-[#5A7184] font-bold text-base">
-                Product
-              </span>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-            </ul>
-            <ul>
-              <span className="pb-4  block text-[#5A7184] font-bold text-base">
-                Product
-              </span>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-            </ul>
-            <ul>
-              <span className="pb-4  block text-[#5A7184] font-bold text-base">
-                Product
-              </span>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-              <li className="py-2 text-[#959EAD] text-sm font-normal">
-                Landingpage
-              </li>
-            </ul>
+            <Categories />
           </div>
         </div>
       </div>

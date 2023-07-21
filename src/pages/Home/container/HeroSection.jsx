@@ -1,6 +1,7 @@
 import { images } from "../../../constants";
 import Search from "../../../components/Search";
 import Tags from "../../../components/Tags";
+import { popularTags } from "../../../data/tags";
 
 const HeroSection = () => {
   return (
@@ -16,7 +17,7 @@ const HeroSection = () => {
           </p>
         </>
         <Search />
-        <Tags />
+        <Tags heading="Popular Tags" tags={popularTags} />
       </div>
       <div className=" hidden lg:block max-w-[700px] ">
         <img

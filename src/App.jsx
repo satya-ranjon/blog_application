@@ -1,9 +1,12 @@
-import HomePage from "./pages/Home/HomePage";
+import { BrowserRouter } from "react-router-dom";
+import Routers from "./routes";
 
 export default function App() {
   return (
-    <div className=" bg-theme">
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <div className=" bg-theme">
+        <Routers />
+      </div>
+    </BrowserRouter>
   );
 }

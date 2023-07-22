@@ -3,6 +3,7 @@ import { images } from "../../constants";
 import MainLayout from "../../layouts/MainLayout";
 import BreadCrumbs from "./container/BreadCrumbs";
 import SuggestedArticles from "./container/SuggestedArticles";
+import CommentArticle from "./container/CommentArticle";
 
 const breadcrumbsData = [
   { link: "/", name: "Home" },
@@ -24,6 +25,7 @@ const SuggestedArticlesData = [
   },
 ];
 const ArticleDetails = () => {
+  console.log("ArticleDetails");
   return (
     <MainLayout>
       <section className="container mx-auto px-4 sm:px-20 lg:px-5 xl:px-0 font-roboto">
@@ -65,9 +67,7 @@ const ArticleDetails = () => {
               faucibus et molestie ac feugiat sed lectus vestibulum.
             </p>
             {/* Comments  */}
-            <div className="">
-              <div className=""></div>
-            </div>
+            <CommentArticle />
           </article>
           {/* SideBar  */}
           <div className=" w-full col-span-4">

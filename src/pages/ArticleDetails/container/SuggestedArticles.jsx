@@ -4,6 +4,7 @@ import Tags from "../../../components/Tags";
 import { tags } from "../../../data/tags";
 
 const SuggestedArticles = ({ articles }) => {
+  console.log("SuggestedArticles");
   return (
     <div className="shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] p-2 ">
       <h1 className=" font-bold text-base font-roboto text-dark-soft pb-3">

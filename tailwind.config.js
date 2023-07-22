@@ -4,6 +4,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      // screens: { tablet: "640px" },
+
       colors: {
         theme: "#f9fcff",
         primary: "#1565D8",

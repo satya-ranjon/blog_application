@@ -7,21 +7,41 @@ const Comments = () => {
   const [commentData, setCommentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [iserror, setIsError] = useState(false);
-
+  console.log(commentData);
   useEffect(() => {
     (async () => {
       try {
         setCommentData(await getCommentsData());
         setIsLoading(false);
       } catch (err) {
-        setIsError(true);
+        setIsError("Error fetching comments. Please try again later.");
         setIsLoading(false);
       }
     })();
   }, []);
 
-  const submitCommentHandler = ({ commentTxt }) => {
-    console.log(commentTxt);
+  const submitCommentHandler = ({
+    commentTxt,
+    parent,
+    replyOnUser,
+    userID,
+    userName,
+    postId,
+  }) => {
+    const newComment = {
+      _id: Math.floor(Math.random() * 10000),
+      user: {
+        _id: userID,
+        name: userName,
+      },
+      desc: commentTxt,
+      post: postId,
+      parent: parent,
+      replyOnUser: replyOnUser,
+      createdAt: new Date().toISOString(),
+    };
+
+    setCommentData([...commentData, newComment]);
   };
 
   return (
@@ -34,12 +54,12 @@ const Comments = () => {
       {isLoading ? (
         <h1>Loading</h1>
       ) : iserror ? (
-        <h1>Some Error</h1>
+        <h1>{iserror}</h1>
       ) : (
         commentData?.length > 0 &&
         commentData
           ?.filter((item) => item.parent === null)
-          .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .map((comment) => {
             const replyCommentList = commentData
               .filter((replyItem) => replyItem.parent === comment._id)

@@ -1,9 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import useUser from "../../hooks/useUser";
+import { useParams } from "react-router-dom";
 
-const CommentSent = ({ submitCommentHandler, reply = false }) => {
+const CommentSent = ({
+  submitCommentHandler,
+  reply = false,
+  parent = null,
+  replyOnUser = null,
+  label = "Send",
+}) => {
   console.log("CommentSent");
   const [comment, setComment] = useState("");
   const commentRef = useRef(null);
+  const { name, userID } = useUser();
+
+  const { id: postId } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +24,14 @@ const CommentSent = ({ submitCommentHandler, reply = false }) => {
       return;
     }
 
-    submitCommentHandler({ commentTxt: comment });
+    submitCommentHandler({
+      commentTxt: comment,
+      parent,
+      replyOnUser,
+      userID,
+      userName: name,
+      postId,
+    });
 
     // Clear comment field after submission
     setComment(" ");
@@ -41,7 +59,7 @@ const CommentSent = ({ submitCommentHandler, reply = false }) => {
         type="submit"
         className="w-[84px] h-[30px] sm:w-[104px] bg-blue-500  px-4 text-sm text-white font-semibold rounded-md 
           ">
-        Send
+        {label}
       </button>
     </form>
   );

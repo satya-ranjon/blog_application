@@ -39,10 +39,12 @@ const Comments = () => {
         commentData?.length > 0 &&
         commentData
           ?.filter((item) => item.parent === null)
+          .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
           .map((comment) => {
-            const replyCommentList = commentData.filter(
-              (replyItem) => replyItem.parent === comment._id
-            );
+            const replyCommentList = commentData
+              .filter((replyItem) => replyItem.parent === comment._id)
+              .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
             return (
               <SingleComment
                 key={comment._id}

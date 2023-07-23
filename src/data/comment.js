@@ -21,7 +21,7 @@ export const getCommentsData = async () => {
       desc: "a reply for Mohammad",
       post: "1",
       parent: "10",
-      replyOnUser: "a",
+      replyOnUser: { _id: "a", name: "Mohammad Rezaii" },
       createdAt: "2022-12-31T17:22:05.092+0000",
     },
     {
@@ -48,18 +48,18 @@ export const getCommentsData = async () => {
       replyOnUser: null,
       createdAt: "2022-12-31T17:22:05.092+0000",
     },
-    // {
-    //   _id: "14",
-    //   user: {
-    //     _id: "a",
-    //     name: "Mohammad Rezaii",
-    //   },
-    //   desc: "it was a nice post, Thank you!",
-    //   post: "1",
-    //   parent: 11,
-    //   replyOnUser: "b",
-    //   createdAt: "2022-12-31T17:22:05.092+0000",
-    // },
+    {
+      _id: "14",
+      user: {
+        _id: "d",
+        name: "Shatya Ranjon",
+      },
+      desc: "it was a nice post, Thank you!",
+      post: "1",
+      parent: "10",
+      replyOnUser: { _id: "b", name: "Paul M. Williams" },
+      createdAt: "2022-12-31T17:22:05.092+0000",
+    },
   ];
 };
 

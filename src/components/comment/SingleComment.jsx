@@ -5,9 +5,9 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 const SingleComment = ({
   comment,
-  replyCommentList,
+  replyCommentList = [],
+  replyOnUser = null,
   single = false,
-  reply = false,
 }) => {
   if (!comment) {
     // Handle the scenario when comment is not provided
@@ -15,13 +15,9 @@ const SingleComment = ({
   }
   console.log(replyCommentList?.length > 0);
   const {
-    _id: commentID,
-    user: { _id: commentUserID, name: commentUserName },
+    user: { name: commentUserName },
     desc,
     createdAt,
-    parent,
-    post,
-    replyOnUser,
   } = comment || [];
 
   // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
@@ -38,13 +34,19 @@ const SingleComment = ({
           </div>
         </div>
         <div className="text-dark-light font-normal">
-          <h1 className=" font-bold text-dark-soft">Khokon Deb</h1>
-          <span className="block  ">
-            {formatDate("2023-07-23T12:34:56.789Z")}
-          </span>
-          <p className="py-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+          <h1 className=" font-bold text-dark-soft">
+            {commentUserName}
+            {replyOnUser && (
+              <span className=" pl-2">
+                with
+                <span className=" pl-2 font-opensans text-sm font-semibold text-sky-500">
+                  {replyOnUser.name}
+                </span>
+              </span>
+            )}
+          </h1>
+          <span className="block  ">{formatDate(createdAt)}</span>
+          <p className="py-2">{desc}</p>
           <ul className=" flex gap-4 items-center justify-start">
             <li className=" flex gap-2 items-center justify-center cursor-pointer">
               <BiComment /> <span>Reply</span>
@@ -64,7 +66,8 @@ const SingleComment = ({
             <SingleComment
               single={true}
               comment={commentReply}
-              key={comment._id}
+              key={commentReply._id}
+              replyOnUser={commentReply.replyOnUser}
             />
           );
         })}

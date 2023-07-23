@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import dateformat from "../../../utils/dateformat";
+import { dateformat } from "../../../utils/dateformat";
 import Tags from "../../../components/Tags";
 import { tags } from "../../../data/tags";
 

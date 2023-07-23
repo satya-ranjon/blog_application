@@ -3,6 +3,7 @@ import { images } from "../../constants";
 import MainLayout from "../../layouts/MainLayout";
 import BreadCrumbs from "./container/BreadCrumbs";
 import SuggestedArticles from "./container/SuggestedArticles";
+import Comments from "../../components/comment/Comments";
 
 const breadcrumbsData = [
   { link: "/", name: "Home" },
@@ -65,9 +66,7 @@ const ArticleDetails = () => {
               faucibus et molestie ac feugiat sed lectus vestibulum.
             </p>
             {/* Comments  */}
-            <div className="">
-              <div className=""></div>
-            </div>
+            <Comments />
           </article>
           {/* SideBar  */}
           <div className=" w-full col-span-4">

@@ -1,4 +1,5 @@
 import { images } from "../constants";
+import { socialMedia } from "../data/socialMedia";
 import Categories from "./Categories";
 
 const Footer = () => {
@@ -13,18 +14,15 @@ const Footer = () => {
               Build a modern and creative website with crealand
             </p>
             <ul className=" flex gap-2">
-              <li>
-                <img src={images.layer} alt="" className="w-[40px] h-[40px]" />
-              </li>
-              <li>
-                <img src={images.layer} alt="" className="w-[40px] h-[40px]" />
-              </li>
-              <li>
-                <img src={images.layer} alt="" className="w-[40px] h-[40px]" />
-              </li>
-              <li>
-                <img src={images.layer} alt="" className="w-[40px] h-[40px]" />
-              </li>
+              {socialMedia?.map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.url}
+                    className="w-[40px] h-[40px]  text-dark-light hover:text-white duration-300">
+                    {item.icon}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

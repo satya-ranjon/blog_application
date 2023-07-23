@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import useUser from "../../hooks/useUser";
 import { useParams } from "react-router-dom";
-import { MdCancelScheduleSend, MdSend } from "react-icons/md";
+import { MdCancelScheduleSend } from "react-icons/md";
+import { PaperPlaneRight } from "phosphor-react";
 
 const CommentSent = ({
   submitCommentHandler,
@@ -38,15 +39,16 @@ const CommentSent = ({
         userName: name,
         postId,
       });
+
+      setComment(" ");
     } else {
       handleUpdateComment({
         commentTxt: comment,
         commentId,
       });
-    }
 
-    // Clear comment field after submission
-    setComment(" ");
+      setComment(" ");
+    }
   };
 
   useEffect(() => {
@@ -77,7 +79,7 @@ const CommentSent = ({
           ">
         <span> {label}</span>
         <span>
-          <MdSend />
+          <PaperPlaneRight size={25} />
         </span>
       </button>
       {reply && (

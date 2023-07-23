@@ -3,12 +3,16 @@ import { formatDate } from "../../utils/dateformat";
 import { BiEditAlt, BiComment } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import useUser from "../../hooks/useUser";
+import CommentSent from "./CommentSent";
 
 const SingleComment = ({
   comment,
   replyCommentList = [],
   replyOnUser = null,
   single = false,
+  submitCommentHandler,
+  affectedComment,
+  setAffectedComment,
 }) => {
   const { userID } = useUser();
 
@@ -18,12 +22,17 @@ const SingleComment = ({
   }
 
   const {
+    _id: commentID,
     user: { name: commentUserName, _id: commentUserID },
     desc,
     createdAt,
   } = comment || [];
 
   const isUserComment = userID === commentUserID;
+  const isReply =
+    affectedComment &&
+    affectedComment.type === "replying" &&
+    affectedComment._id === commentID;
 
   // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
   return (
@@ -53,7 +62,11 @@ const SingleComment = ({
           <span className="block  ">{formatDate(createdAt)}</span>
           <p className="py-2">{desc}</p>
           <ul className=" flex gap-4 items-center justify-start">
-            <li className=" flex gap-2 items-center justify-center cursor-pointer">
+            <li
+              className=" flex gap-2 items-center justify-center cursor-pointer"
+              onClick={() =>
+                setAffectedComment({ type: "replying", _id: commentID })
+              }>
               <BiComment /> <span>Reply</span>
             </li>
             {isUserComment && (
@@ -69,6 +82,13 @@ const SingleComment = ({
           </ul>
         </div>
       </div>
+      {isReply && (
+        <CommentSent
+          submitCommentHandler={submitCommentHandler}
+          parent={commentID}
+          replyOnUser={{ _id: commentUserID, name: commentUserName }}
+        />
+      )}
       {replyCommentList?.length > 0 &&
         replyCommentList.map((commentReply) => {
           return (
@@ -77,6 +97,9 @@ const SingleComment = ({
               comment={commentReply}
               key={commentReply._id}
               replyOnUser={commentReply.replyOnUser}
+              submitCommentHandler={submitCommentHandler}
+              affectedComment={affectedComment}
+              setAffectedComment={setAffectedComment}
             />
           );
         })}

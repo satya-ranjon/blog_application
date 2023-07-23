@@ -7,7 +7,11 @@ const Comments = () => {
   const [commentData, setCommentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [iserror, setIsError] = useState(false);
+  const [affectedComment, setAffectedComment] = useState(null);
+
   console.log(commentData);
+  console.log(affectedComment);
+
   useEffect(() => {
     (async () => {
       try {
@@ -70,6 +74,9 @@ const Comments = () => {
                 key={comment._id}
                 comment={comment}
                 replyCommentList={replyCommentList}
+                submitCommentHandler={submitCommentHandler}
+                affectedComment={affectedComment}
+                setAffectedComment={setAffectedComment}
               />
             );
           })

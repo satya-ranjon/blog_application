@@ -1,21 +1,24 @@
+import { Link } from "react-router-dom";
 import { images } from "../constants";
 
 const ArticleCard = () => {
   return (
     <div className=" rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] my-5 font-opensans">
-      <div className="">
+      <Link to={`/article-details/1`}>
         <img
           src={images.article}
           alt=""
           className="w-full h-[200px] xl:h-[300px]"
         />
-      </div>
+      </Link>
       <div className="p-4">
         <h1 className=" font-roboto text-xl font-bold text-dark-soft">
-          Future of Work
+          <Link to={`/article-details/1`}>Future of Work</Link>
         </h1>
         <p className=" text-dark-light  font-normal text-sm py-4">
-          Majority of peole will work in jobs that don’t exist today.
+          <Link to={`/article-details/1`}>
+            Majority of peole will work in jobs that don’t exist today.
+          </Link>
         </p>
         <div className=" flex gap-2 justify-between items-center">
           <div className="flex gap-3 justify-start items-center">

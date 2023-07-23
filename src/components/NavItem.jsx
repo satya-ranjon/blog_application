@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const NavItem = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -9,9 +10,9 @@ const NavItem = ({ item }) => {
     <li className=" group relative">
       {item.type === "link" ? (
         <>
-          <a href="" className="py-2 px-4 ">
+          <Link to={item.url} className="py-2 px-4 ">
             {item.name}
-          </a>
+          </Link>
           <span className="absolute text-white lg:text-primary font-bold transition-all duration-500 right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
             /
           </span>
@@ -31,11 +32,11 @@ const NavItem = ({ item }) => {
             <ul className=" bg-dark-hard lg:bg-transparent text-center flex flex-col items-center gap-2 shadow-lg rounded-lg overflow-hidden">
               {item?.items?.map((page) => (
                 <li key={page}>
-                  <a
-                    href=""
+                  <Link
+                    to="/"
                     className="lg:hover:bg-dark-hard  hover:text-white px-4 py-2 text-white lg:text-dark-soft block">
                     {page}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

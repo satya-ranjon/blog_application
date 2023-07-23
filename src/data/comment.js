@@ -48,18 +48,6 @@ export const getCommentsData = async () => {
       replyOnUser: null,
       createdAt: "2022-12-31T17:22:05.092+0000",
     },
-    {
-      _id: "14",
-      user: {
-        _id: "d",
-        name: "Shatya Ranjon",
-      },
-      desc: "it was a nice post, Thank you!",
-      post: "1",
-      parent: "10",
-      replyOnUser: { _id: "b", name: "Paul M. Williams" },
-      createdAt: "2022-12-31T17:22:05.092+0000",
-    },
   ];
 };
 

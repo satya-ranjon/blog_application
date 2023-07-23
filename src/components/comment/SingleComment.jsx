@@ -13,6 +13,7 @@ const SingleComment = ({
   submitCommentHandler,
   affectedComment,
   setAffectedComment,
+  parentID = null,
 }) => {
   const { userID } = useUser();
 
@@ -62,13 +63,15 @@ const SingleComment = ({
           <span className="block  ">{formatDate(createdAt)}</span>
           <p className="py-2">{desc}</p>
           <ul className=" flex gap-4 items-center justify-start">
-            <li
-              className=" flex gap-2 items-center justify-center cursor-pointer"
-              onClick={() =>
-                setAffectedComment({ type: "replying", _id: commentID })
-              }>
-              <BiComment /> <span>Reply</span>
-            </li>
+            {!isUserComment && (
+              <li
+                className=" flex gap-2 items-center justify-center cursor-pointer"
+                onClick={() =>
+                  setAffectedComment({ type: "replying", _id: commentID })
+                }>
+                <BiComment /> <span>Reply</span>
+              </li>
+            )}
             {isUserComment && (
               <>
                 <li className=" flex gap-2 items-center justify-center cursor-pointer">
@@ -85,7 +88,7 @@ const SingleComment = ({
       {isReply && (
         <CommentSent
           submitCommentHandler={submitCommentHandler}
-          parent={commentID}
+          parent={parentID || commentID}
           replyOnUser={{ _id: commentUserID, name: commentUserName }}
         />
       )}
@@ -100,6 +103,7 @@ const SingleComment = ({
               submitCommentHandler={submitCommentHandler}
               affectedComment={affectedComment}
               setAffectedComment={setAffectedComment}
+              parentID={commentReply.parent}
             />
           );
         })}

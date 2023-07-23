@@ -39,7 +39,18 @@ const Comments = () => {
         commentData?.length > 0 &&
         commentData
           ?.filter((item) => item.parent === null)
-          .map((comment) => <SingleComment key={comment._id} />)
+          .map((comment) => {
+            const replyCommentList = commentData.filter(
+              (replyItem) => replyItem.parent === comment._id
+            );
+            return (
+              <SingleComment
+                key={comment._id}
+                comment={comment}
+                replyCommentList={replyCommentList}
+              />
+            );
+          })
       )}
     </div>
   );

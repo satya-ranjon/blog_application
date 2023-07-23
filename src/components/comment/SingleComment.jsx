@@ -4,6 +4,7 @@ import { BiEditAlt, BiComment } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const SingleComment = ({ single = false, reply = false }) => {
+  // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
   return (
     <div className={`bg-[#f2f4f5] text-xs p-2 my-2 ${single && "ml-10"}`}>
       <div className="flex gap-2 justify-start py-2 ">

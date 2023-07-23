@@ -53,6 +53,13 @@ const Comments = () => {
     setCommentData(updatedComment);
   };
 
+  const handleUpdateComment = ({ commentTxt, commentId }) => {
+    const updatedState = commentData.map((item) =>
+      item._id === commentId ? { ...item, desc: commentTxt } : item
+    );
+    setCommentData(updatedState);
+  };
+
   return (
     <div className="mb-5">
       <h1 className=" font-bold text-base text-dark-soft font-roboto py-8 ">
@@ -83,6 +90,7 @@ const Comments = () => {
                 affectedComment={affectedComment}
                 setAffectedComment={setAffectedComment}
                 handleRemoveComment={handleRemoveComment}
+                handleUpdateComment={handleUpdateComment}
               />
             );
           })

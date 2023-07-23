@@ -10,6 +10,10 @@ const CommentSent = ({
   replyOnUser = null,
   label = "Send",
   cancelCommentSendHandler,
+  initialData = null,
+  isEdit = false,
+  handleUpdateComment,
+  commentId,
 }) => {
   console.log("CommentSent");
   const [comment, setComment] = useState("");
@@ -25,15 +29,21 @@ const CommentSent = ({
       // Prevent submitting empty comments
       return;
     }
-
-    submitCommentHandler({
-      commentTxt: comment,
-      parent,
-      replyOnUser,
-      userID,
-      userName: name,
-      postId,
-    });
+    if (!isEdit) {
+      submitCommentHandler({
+        commentTxt: comment,
+        parent,
+        replyOnUser,
+        userID,
+        userName: name,
+        postId,
+      });
+    } else {
+      handleUpdateComment({
+        commentTxt: comment,
+        commentId,
+      });
+    }
 
     // Clear comment field after submission
     setComment(" ");
@@ -42,7 +52,11 @@ const CommentSent = ({
   useEffect(() => {
     // Focus on the textarea after mounting and after submission
     reply && commentRef.current.focus();
-  }, []);
+
+    if (initialData) {
+      setComment(initialData);
+    }
+  }, [initialData, reply]);
   return (
     <form
       onSubmit={handleSubmit}

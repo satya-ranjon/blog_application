@@ -15,6 +15,7 @@ const SingleComment = ({
   setAffectedComment,
   parentID = null,
   handleRemoveComment,
+  handleUpdateComment,
 }) => {
   const { userID } = useUser();
 
@@ -31,23 +32,32 @@ const SingleComment = ({
   } = comment || [];
 
   const isUserComment = userID === commentUserID;
+
   let isReply =
     affectedComment &&
     affectedComment.type === "replying" &&
     affectedComment._id === commentID;
 
+  let isEdit =
+    affectedComment &&
+    affectedComment.type === "editing" &&
+    affectedComment._id === commentID;
+
   const replyCommentSendHandler = () => {
     setAffectedComment({ type: "replying", _id: commentID });
   };
+  const editingCommentSendHandler = () => {
+    setAffectedComment({ type: "editing", _id: commentID });
+  };
+
   const cancelCommentSendHandler = () => {
-    console.log("cancelCommentSendHandler");
     setAffectedComment(null);
   };
 
   const removeCommentHandler = () => {
     handleRemoveComment(commentID);
   };
-  // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
+
   return (
     <div className={`bg-[#f2f4f5] text-xs p-2 my-2 ${single && "ml-10"}`}>
       <div className="flex gap-2 justify-start py-2 ">
@@ -77,18 +87,20 @@ const SingleComment = ({
           <ul className=" flex gap-4 items-center justify-start">
             {!isUserComment && (
               <li
-                className=" flex gap-2 items-center justify-center cursor-pointer"
+                className="flex gap-2 items-center justify-center cursor-pointer"
                 onClick={replyCommentSendHandler}>
                 <BiComment /> <span>Reply</span>
               </li>
             )}
             {isUserComment && (
               <>
-                <li className=" flex gap-2 items-center justify-center cursor-pointer">
+                <li
+                  className="flex gap-2 items-center justify-center cursor-pointer"
+                  onClick={editingCommentSendHandler}>
                   <BiEditAlt /> <span>Edit</span>
                 </li>
                 <li
-                  className=" flex gap-2 items-center justify-center cursor-pointer"
+                  className="flex gap-2 items-center justify-center cursor-pointer"
                   onClick={removeCommentHandler}>
                   <AiOutlineDelete /> <span>Delete</span>
                 </li>
@@ -97,7 +109,7 @@ const SingleComment = ({
           </ul>
         </div>
       </div>
-      {isReply && (
+      {(isReply || isEdit) && (
         <CommentSent
           submitCommentHandler={submitCommentHandler}
           parent={parentID || commentID}
@@ -105,6 +117,10 @@ const SingleComment = ({
           label="Reply"
           reply={true}
           cancelCommentSendHandler={cancelCommentSendHandler}
+          initialData={isEdit ? desc : null}
+          isEdit={isEdit}
+          handleUpdateComment={handleUpdateComment}
+          commentId={commentID}
         />
       )}
       {replyCommentList?.length > 0 &&
@@ -120,6 +136,7 @@ const SingleComment = ({
               setAffectedComment={setAffectedComment}
               parentID={commentReply.parent}
               handleRemoveComment={handleRemoveComment}
+              handleUpdateComment={handleUpdateComment}
             />
           );
         })}

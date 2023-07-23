@@ -3,6 +3,7 @@ import { images } from "../constants";
 import navItemInfo from "../data/navItemInfo";
 import NavItem from "./NavItem";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [navIsVisible, setNavIsVisible] = useState(false);
@@ -29,9 +30,11 @@ const Header = () => {
             <NavItem key={item.name} item={item} />
           ))}
         </ul>
-        <button className="border-2 lg:border-primary rounded-full text-center text-sm text-white lg:text-primary py-1 px-5 font-bold lg:hover:bg-primary lg:hover:text-white transition-colors duration-300 ">
-          Sign in
-        </button>
+        <Link to="/sign-up">
+          <button className="border-2 lg:border-primary rounded-full text-center text-sm text-white lg:text-primary py-1 px-5 font-bold lg:hover:bg-primary lg:hover:text-white transition-colors duration-300 ">
+            Sign in
+          </button>
+        </Link>
       </nav>
     </header>
   );

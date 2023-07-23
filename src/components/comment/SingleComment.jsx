@@ -2,6 +2,7 @@ import { images } from "../../constants";
 import { formatDate } from "../../utils/dateformat";
 import { BiEditAlt, BiComment } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
+import useUser from "../../hooks/useUser";
 
 const SingleComment = ({
   comment,
@@ -9,16 +10,20 @@ const SingleComment = ({
   replyOnUser = null,
   single = false,
 }) => {
+  const { userID } = useUser();
+
   if (!comment) {
     // Handle the scenario when comment is not provided
     return null;
   }
-  console.log(replyCommentList?.length > 0);
+
   const {
-    user: { name: commentUserName },
+    user: { name: commentUserName, _id: commentUserID },
     desc,
     createdAt,
   } = comment || [];
+
+  const isUserComment = userID === commentUserID;
 
   // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
   return (
@@ -51,12 +56,16 @@ const SingleComment = ({
             <li className=" flex gap-2 items-center justify-center cursor-pointer">
               <BiComment /> <span>Reply</span>
             </li>
-            <li className=" flex gap-2 items-center justify-center cursor-pointer">
-              <BiEditAlt /> <span>Edit</span>
-            </li>
-            <li className=" flex gap-2 items-center justify-center cursor-pointer">
-              <AiOutlineDelete /> <span>Delete</span>
-            </li>
+            {isUserComment && (
+              <>
+                <li className=" flex gap-2 items-center justify-center cursor-pointer">
+                  <BiEditAlt /> <span>Edit</span>
+                </li>
+                <li className=" flex gap-2 items-center justify-center cursor-pointer">
+                  <AiOutlineDelete /> <span>Delete</span>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

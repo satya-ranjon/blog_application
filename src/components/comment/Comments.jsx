@@ -45,6 +45,14 @@ const Comments = () => {
     setCommentData([...commentData, newComment]);
   };
 
+  const handleRemoveComment = (idToRemove) => {
+    const updatedComment = commentData.filter(
+      (comment) => comment._id !== idToRemove
+    );
+
+    setCommentData(updatedComment);
+  };
+
   return (
     <div className="mb-5">
       <h1 className=" font-bold text-base text-dark-soft font-roboto py-8 ">
@@ -74,6 +82,7 @@ const Comments = () => {
                 submitCommentHandler={submitCommentHandler}
                 affectedComment={affectedComment}
                 setAffectedComment={setAffectedComment}
+                handleRemoveComment={handleRemoveComment}
               />
             );
           })

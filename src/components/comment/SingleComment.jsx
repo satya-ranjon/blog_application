@@ -14,6 +14,7 @@ const SingleComment = ({
   affectedComment,
   setAffectedComment,
   parentID = null,
+  handleRemoveComment,
 }) => {
   const { userID } = useUser();
 
@@ -43,6 +44,9 @@ const SingleComment = ({
     setAffectedComment(null);
   };
 
+  const removeCommentHandler = () => {
+    handleRemoveComment(commentID);
+  };
   // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
   return (
     <div className={`bg-[#f2f4f5] text-xs p-2 my-2 ${single && "ml-10"}`}>
@@ -83,7 +87,9 @@ const SingleComment = ({
                 <li className=" flex gap-2 items-center justify-center cursor-pointer">
                   <BiEditAlt /> <span>Edit</span>
                 </li>
-                <li className=" flex gap-2 items-center justify-center cursor-pointer">
+                <li
+                  className=" flex gap-2 items-center justify-center cursor-pointer"
+                  onClick={removeCommentHandler}>
                   <AiOutlineDelete /> <span>Delete</span>
                 </li>
               </>
@@ -113,6 +119,7 @@ const SingleComment = ({
               affectedComment={affectedComment}
               setAffectedComment={setAffectedComment}
               parentID={commentReply.parent}
+              handleRemoveComment={handleRemoveComment}
             />
           );
         })}

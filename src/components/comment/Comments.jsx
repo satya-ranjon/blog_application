@@ -9,9 +9,6 @@ const Comments = () => {
   const [iserror, setIsError] = useState(false);
   const [affectedComment, setAffectedComment] = useState(null);
 
-  console.log(commentData);
-  console.log(affectedComment);
-
   useEffect(() => {
     (async () => {
       try {
@@ -49,9 +46,9 @@ const Comments = () => {
   };
 
   return (
-    <div>
-      <h1 className=" font-bold text-base text-dark-soft font-roboto py-8">
-        All Comments (3)
+    <div className="mb-5">
+      <h1 className=" font-bold text-base text-dark-soft font-roboto py-8 ">
+        All Comments ({commentData?.length})
       </h1>
       <CommentSent submitCommentHandler={submitCommentHandler} />
 

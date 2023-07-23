@@ -30,10 +30,18 @@ const SingleComment = ({
   } = comment || [];
 
   const isUserComment = userID === commentUserID;
-  const isReply =
+  let isReply =
     affectedComment &&
     affectedComment.type === "replying" &&
     affectedComment._id === commentID;
+
+  const replyCommentSendHandler = () => {
+    setAffectedComment({ type: "replying", _id: commentID });
+  };
+  const cancelCommentSendHandler = () => {
+    console.log("cancelCommentSendHandler");
+    setAffectedComment(null);
+  };
 
   // const isReply = affectedComment && affectedComment.type === 'replying' && affectedComment._id ===
   return (
@@ -66,9 +74,7 @@ const SingleComment = ({
             {!isUserComment && (
               <li
                 className=" flex gap-2 items-center justify-center cursor-pointer"
-                onClick={() =>
-                  setAffectedComment({ type: "replying", _id: commentID })
-                }>
+                onClick={replyCommentSendHandler}>
                 <BiComment /> <span>Reply</span>
               </li>
             )}
@@ -90,6 +96,9 @@ const SingleComment = ({
           submitCommentHandler={submitCommentHandler}
           parent={parentID || commentID}
           replyOnUser={{ _id: commentUserID, name: commentUserName }}
+          label="Reply"
+          reply={true}
+          cancelCommentSendHandler={cancelCommentSendHandler}
         />
       )}
       {replyCommentList?.length > 0 &&

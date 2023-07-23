@@ -4,6 +4,7 @@ import MainLayout from "../../layouts/MainLayout";
 import BreadCrumbs from "./container/BreadCrumbs";
 import SuggestedArticles from "./container/SuggestedArticles";
 import Comments from "../../components/comment/Comments";
+// import ArticleDetailsSkeleton from "../../components/skeleton/ArticleDetailsSkeleton";
 
 const breadcrumbsData = [
   { link: "/", name: "Home" },
@@ -29,12 +30,13 @@ const ArticleDetails = () => {
     <MainLayout>
       <section className="container mx-auto px-4 sm:px-20 lg:px-5 xl:px-0 font-roboto">
         <div className="lg:grid gap-4 xl:gap-8 grid-cols-12  ">
-          <article className="  col-span-8">
+          {/* <ArticleDetailsSkeleton /> */}
+          <article className="col-span-8">
             <BreadCrumbs data={breadcrumbsData} />
             <img
               src={images.article}
               alt=" article "
-              className=" w-full rounded-lg"
+              className=" w-full rounded-lg h-[220px] sm:h-[300px]  lg:h-[450px] xl:h-[550px]"
             />
             <Link
               to={`/blog?search=education`}

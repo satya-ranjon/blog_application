@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { dateformat } from "../../../utils/dateformat";
 import Tags from "../../../components/Tags";
 import { tags } from "../../../data/tags";
+import SuggestedArticlesSkeleton from "../../../components/skeleton/SuggestedArticlesSkeleton";
 
 const SuggestedArticles = ({ articles }) => {
   return (
@@ -9,6 +10,8 @@ const SuggestedArticles = ({ articles }) => {
       <h1 className=" font-bold text-base font-roboto text-dark-soft pb-3">
         Latest Article
       </h1>
+
+      <SuggestedArticlesSkeleton />
       {articles?.map((item) => (
         <div className=" flex gap-2 py-1" key={item._id}>
           <Link

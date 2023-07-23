@@ -4,7 +4,11 @@ const ArticleCard = () => {
   return (
     <div className=" rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] my-5 font-opensans">
       <div className="">
-        <img src={images.article} alt="" className="w-full" />
+        <img
+          src={images.article}
+          alt=""
+          className="w-full h-[200px] xl:h-[300px]"
+        />
       </div>
       <div className="p-4">
         <h1 className=" font-roboto text-xl font-bold text-dark-soft">

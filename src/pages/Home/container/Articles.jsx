@@ -1,4 +1,5 @@
 import ArticleCard from "../../../components/ArticleCard";
+import ArticleCardSkeleton from "../../../components/skeleton/ArticleCardSkeleton";
 import { images } from "../../../constants";
 import articles from "../../../data/article";
 
@@ -9,6 +10,8 @@ const Articles = () => {
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}
+
+        <ArticleCardSkeleton />
       </div>
       <div className="container  mx-auto flex justify-center items-center text-center mb-16 mt-4 ">
         <button className="flex justify-between items-center gap-2 border-2 border-sky-500 text-sky-500 p-3 px-6 text-xl font-bold rounded-md ">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CommentSent from "./CommentSent";
 import SingleComment from "./SingleComment";
 import getCommentsData from "../../data/comment";
+import CommentsSkeleton from "../skeleton/CommentsSkeleton";
 
 const Comments = () => {
   const [commentData, setCommentData] = useState([]);
@@ -67,6 +68,7 @@ const Comments = () => {
       </h1>
       <CommentSent submitCommentHandler={submitCommentHandler} />
 
+      <CommentsSkeleton />
       {isLoading ? (
         <h1>Loading</h1>
       ) : iserror ? (

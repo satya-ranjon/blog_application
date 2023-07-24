@@ -1,13 +1,18 @@
-import Modal from "../../components/Modal";
-import MainLayout from "../../layouts/MainLayout";
+import Form from "../../components/Form/Form";
+import Header from "../../components/Header";
 
-const Login = () => {
+const SignUp = () => {
   return (
-    <MainLayout>
-      <h1 className="">Login</h1>
-      <Modal />
-    </MainLayout>
+    <>
+      <Header />
+      <div className="container mx-auto p-2  flex flex-col justify-center items-center h-[90vh] ">
+        <h1 className=" text-center text-dark-soft text-3xl font-bold font-roboto ">
+          Login
+        </h1>
+        <Form />
+      </div>
+    </>
   );
 };
 
-export default Login;
+export default SignUp;

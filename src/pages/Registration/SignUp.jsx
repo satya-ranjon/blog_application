@@ -1,10 +1,17 @@
-import MainLayout from "../../layouts/MainLayout";
+import Form from "../../components/Form/Form";
+import Header from "../../components/Header";
 
 const SignUp = () => {
   return (
-    <MainLayout>
-      <h1>Sign Up</h1>
-    </MainLayout>
+    <>
+      <Header />
+      <div className="container mx-auto p-2  flex flex-col justify-center items-center h-[90vh] ">
+        <h1 className=" text-center text-dark-soft text-3xl font-bold font-roboto ">
+          Sign Up
+        </h1>
+        <Form />
+      </div>
+    </>
   );
 };
 
